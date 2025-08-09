@@ -1,8 +1,137 @@
 <?xml version="1.0"?>
 <robot name="barista_robot">
 
-    <link name="base_link">
+  <material name="blue">
+      <color rgba="0.0 0.0 1.0 1"/>
+  </material>
+
+  <material name="black">
+      <color rgba="0.0 0.0 0.0 1"/>
+  </material>
+
+  <link name="base_link">
+      <inertial>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.1 0.1 0.1"/>
+        </geometry>
+    </visual>
+  </link>
+
+    <!-- chassis -->
+    <link name="chassis">
         <visual>
+            <geometry>
+                <cylinder length="0.155" radius="0.178"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>  
     </link>
+
+    <joint name="base_link_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <axis xyz="0.0 0.0 0.0"/>
+        <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+    </joint>
+
+    <!-- standoff rods -->
+    <link name="standoff_front_left">
+        <visual>
+            <origin xyz="0.12 -0.065 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.010" length="0.220"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <joint name="joint_standoff_front_left" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0.0 0.1875"/>
+        <child link="standoff_front_left"/>
+        <parent link="chassis"/>
+        <!-- <axis rpy="0 0 0" xyz="0 1 0"/> -->
+        <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+    </joint>
+
+    <link name="standoff_front_right">
+        <visual>
+            <origin xyz="0.12 0.065 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.010" length="0.220"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <joint name="joint_standoff_front_right" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0.0 0.1875"/>
+        <child link="standoff_front_right"/>
+        <parent link="chassis"/>
+        <!-- <axis rpy="0 0 0" xyz="0 1 0"/> -->
+        <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+    </joint>
+
+    <link name="standoff_back_left">
+        <visual>
+            <origin xyz="-0.12 -0.065 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.010" length="0.220"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <joint name="joint_standoff_back_left" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0.0 0.1875"/>
+        <child link="standoff_back_left"/>
+        <parent link="chassis"/>
+        <!-- <axis rpy="0 0 0" xyz="0 1 0"/> -->
+        <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+    </joint>
+
+    <link name="standoff_back_right">
+        <visual>
+            <origin xyz="-0.12 0.065 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.010" length="0.220"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <joint name="joint_standoff_back_right" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0.0 0.1875"/>
+        <child link="standoff_back_right"/>
+        <parent link="chassis"/>
+        <!-- <axis rpy="0 0 0" xyz="0 1 0"/> -->
+        <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+    </joint>
+
+    <!-- Cup holder tray -->
+    <link name="cup_holder_tray">
+        <visual>
+            <geometry>
+                <cylinder length="0.090" radius="0.160"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>  
+    </link>
+
+    <joint name="joint_cup_holder_tray" type="fixed">
+        <origin xyz="0.0 0.0 0.3425" rpy="0.0 0.0 0.0"/>
+        <parent link="chassis"/>
+        <child link="cup_holder_tray"/>
+        <!-- <axis xyz="0.0 0.0 0.0"/> -->
+        <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+    </joint>
+
+
 
 </robot>
