@@ -24,11 +24,22 @@ def generate_launch_description():
         name='robot_state_publisher_node',
         emulate_tty=True,
         parameters=[{'use_sim_time': True, 'robot_description': Command(['xacro ', robot_desc_path])}],
+        # parameters=[{'use_sim_time': True, 'robot_description': Command(['cat ', robot_desc_path])}],
+        output="screen"
+    )
+
+    # Joint State Publisher - just for testing
+    joint_state_publisher_node = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher',
+        parameters=[{'use_sim_time': False}],
         output="screen"
     )
 
     # RVIZ Configuration
-    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'urdf_vis.rviz')
+    # rviz_config_file = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_model.rviz')
+    rviz_config_file = os.path.join(get_package_share_directory(package_description), 'rviz', '__wheel_checking.rviz')
 
     rviz_node = Node(
             package='rviz2',
@@ -36,12 +47,14 @@ def generate_launch_description():
             output='screen',
             name='rviz_node',
             parameters=[{'use_sim_time': True}],
-            arguments=['-d', rviz_config_dir])
+            # arguments=['-d', rviz_config_dir],    
+        arguments=['-d', rviz_config_file] if os.path.exists(rviz_config_file) else [])
 
     # create and return launch description object
     return LaunchDescription(
         [            
             robot_state_publisher_node,
+            joint_state_publisher_node,
             rviz_node
         ]
     )
