@@ -8,6 +8,7 @@ Panels:
         - /Status1
         - /RobotModel1
         - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 553
   - Class: rviz_common/Selection
@@ -67,11 +68,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        back_pitch_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         back_roll_link:
           Alpha: 1
           Show Axes: false
@@ -86,7 +82,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         chassis:
           Alpha: 1
           Show Axes: false
@@ -97,7 +92,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        front_pitch_link:
+        front_indicator:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -108,6 +103,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         front_yaw_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        laser_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -154,9 +154,7 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
-        back_pitch_link:
-          Value: true
+        All Enabled: false
         back_roll_link:
           Value: true
         back_yaw_link:
@@ -167,11 +165,13 @@ Visualization Manager:
           Value: true
         cup_holder_tray:
           Value: true
-        front_pitch_link:
-          Value: true
+        front_indicator:
+          Value: false
         front_roll_link:
           Value: true
         front_yaw_link:
+          Value: true
+        laser_link:
           Value: true
         left_wheel:
           Value: true
@@ -195,14 +195,16 @@ Visualization Manager:
           chassis:
             back_yaw_link:
               back_roll_link:
-                back_pitch_link:
-                  {}
+                {}
             cup_holder_tray:
+              {}
+            front_indicator:
               {}
             front_yaw_link:
               front_roll_link:
-                front_pitch_link:
-                  {}
+                {}
+            laser_link:
+              {}
             left_wheel:
               {}
             right_wheel:
@@ -263,25 +265,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2.737480640411377
+      Distance: 2.250859022140503
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.0484955795109272
+        Y: -0.01989152282476425
+        Z: 0.15729068219661713
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.37039807438850403
+      Pitch: 0.3103978633880615
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.26039639115333557
+      Yaw: 0.5553970336914062
     Saved: ~
 Window Geometry:
   Displays:
@@ -299,5 +301,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1600
-  X: 0
-  Y: 0
+  X: 1
+  Y: 1

@@ -61,8 +61,8 @@
         <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
     </joint>
 
-    <!-- FRONT text indicator -->
-    <link name="front_text">
+    <!-- FRONT indicator -->
+    <link name="front_indicator">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
@@ -72,10 +72,10 @@
         </visual>
     </link>
 
-    <joint name="joint_front_text" type="fixed">
+    <joint name="joint_front_indicator" type="fixed">
         <origin xyz="0.18 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <parent link="chassis"/>
-        <child link="front_text"/>
+        <child link="front_indicator"/>
     </joint>
 
     <!-- Laser Scanner -->
@@ -83,14 +83,18 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <cylinder length="0.04" radius="0.025"/>
+                <!-- <cylinder length="0.04" radius="0.025"/> -->
+                <mesh filename="package://barista_robot_description/meshes/sick_tim551.dae" scale="0.6 0.6 0.6"/>
             </geometry>
-            <material name="black"/>
+            <!-- <material name="black"/> -->
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <cylinder length="0.04" radius="0.025"/>
+                <!-- <box size="0.5 0.5 0.5"/> -->
+                <!-- <cylinder length="0.04" radius="0.025"/> -->
+                <mesh filename="package://barista_robot_description/meshes/sick_tim551.dae" scale="0.6 0.6 0.6"/>
+            
             </geometry>
         </collision>
         <inertial>
@@ -101,7 +105,7 @@
     </link>
 
     <joint name="joint_laser" type="fixed">
-        <origin xyz="0.15 0.0 0.095" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.15 0.0 0.077" rpy="0.0 0.0 0.0"/>
         <parent link="chassis"/>
         <child link="laser_link"/>
     </joint>
@@ -120,7 +124,6 @@
             <mass value="0.5"/>
             <inertia ixx="0.00017256166666666667" ixy="0" ixz="0" iyy="0.00017256166666666667" iyz="0" izz="0.00030976"/>
         </inertial>
-
     </link>
 
     <joint name="joint_left_wheel" type="continuous">
@@ -303,6 +306,7 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="0.1"/>
             <!-- <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/> -->
+            <inertia ixx="0.00040583333333333335" ixy="0" ixz="0" iyy="0.00040583333333333335" iyz="0" izz="5e-06"/>
         </inertial>
     </link>
 

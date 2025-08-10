@@ -38,8 +38,8 @@ def generate_launch_description():
     )
 
     # RVIZ Configuration
-    # rviz_config_file = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_model.rviz')
-    rviz_config_file = os.path.join(get_package_share_directory(package_description), 'rviz', '__wheel_checking.rviz')
+    rviz_config_file = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_model.rviz')
+    # rviz_config_file = os.path.join(get_package_share_directory(package_description), 'rviz', 'wheel_checking.rviz')
 
     rviz_node = Node(
             package='rviz2',
