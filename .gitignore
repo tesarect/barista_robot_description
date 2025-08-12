@@ -2,9 +2,6 @@
 /install
 /log
 *.png
-*.stl
-*.STL
 *.dae
-*.jpg
 *.tga
 _*
