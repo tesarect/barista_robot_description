@@ -2,6 +2,5 @@
 /install
 /log
 *.png
-*.dae
-*.tga
+
 _*

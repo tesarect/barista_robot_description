@@ -34,15 +34,6 @@ def generate_launch_description():
         output="screen"
     )
 
-    # # Joint State Publisher - just for testing
-    # joint_state_publisher_node = Node(
-    #     package='joint_state_publisher',
-    #     executable='joint_state_publisher',
-    #     name='joint_state_publisher',
-    #     parameters=[{'use_sim_time': False}],
-    #     output="screen"
-    # )
-
     # Launch Gazebo with empty world
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
@@ -73,7 +64,7 @@ def generate_launch_description():
                    ]
     )
 
-    #    '-topic', '/robot_description'
+
     # RVIZ Configuration
     rviz_config_file = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_model.rviz')
 
