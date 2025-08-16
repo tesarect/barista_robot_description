@@ -85,7 +85,7 @@
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <cylinder length="0.010" radius="0.0352"/>
+                <cylinder length="0.0206" radius="0.0352"/>
             </geometry>
         </collision>
     </link>
@@ -122,7 +122,7 @@
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <cylinder length="0.010" radius="0.0352"/>
+                <cylinder length="0.0206" radius="0.0352"/>
             </geometry>
         </collision>
     </link>
@@ -306,7 +306,7 @@
             <inertia ixx="4.95616e-05" ixy="0" ixz="0" iyy="4.95616e-05" iyz="0" izz="4.95616e-05"/>
         </inertial>
         <collision>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <cylinder length="0.010" radius="0.0352"/>
             </geometry>
@@ -355,6 +355,12 @@
             <mass value="0.1"/>
             <inertia ixx="0.00040583333333333335" ixy="0" ixz="0" iyy="0.00040583333333333335" iyz="0" izz="5e-06"/>
         </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.010" radius="0.220"/>
+            </geometry>
+        </collision>
     </link>
 
     <joint name="joint_standoff_front_left" type="fixed">
@@ -376,6 +382,12 @@
             <mass value="0.1"/>
             <inertia ixx="0.00040583333333333335" ixy="0" ixz="0" iyy="0.00040583333333333335" iyz="0" izz="5e-06"/>
         </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.010" radius="0.220"/>
+            </geometry>
+        </collision>
     </link>
 
     <joint name="joint_standoff_front_right" type="fixed">
@@ -397,6 +409,12 @@
             <mass value="0.1"/>
             <inertia ixx="0.00040583333333333335" ixy="0" ixz="0" iyy="0.00040583333333333335" iyz="0" izz="5e-06"/>
         </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.010" radius="0.220"/>
+            </geometry>
+        </collision>
     </link>
 
     <joint name="joint_standoff_back_left" type="fixed">
@@ -418,6 +436,12 @@
             <mass value="0.1"/>
             <inertia ixx="0.00040583333333333335" ixy="0" ixz="0" iyy="0.00040583333333333335" iyz="0" izz="5e-06"/>
         </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.010" radius="0.220"/>
+            </geometry>
+        </collision>
     </link>
 
     <joint name="joint_standoff_back_right" type="fixed">

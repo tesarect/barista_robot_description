@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Laser Scanner macro -->
+    <!-- <xacro:macro name="laser_scanner" params="include_laser robot_name"> -->
+    <xacro:macro name="laser_scanner" params="include_laser">
+    
+    <!-- Only create laser if include_laser is true -->
+    <xacro:if value="${include_laser}">
+      
+        <!-- Laser link -->
+        <link name="laser_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://barista_robot_description/meshes/sick_tim551.dae"/>
+                </geometry>
+            </visual>
+            
+            <collision>
+                <geometry>
+                    <mesh filename="package://barista_robot_description/meshes/sick_tim551.dae"/>
+                </geometry>
+            </collision>
+            
+            <inertial>
+                <mass value="0.3"/>
+                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.0005"/>
+            </inertial>
+        </link>
+
+        <!-- Laser optical frame -->
+        <link name="laser_optical_frame"/>
+        <joint name="laser_optical_joint" type="fixed">
+            <origin xyz="0.0 0.0 0.06" rpy="0.0 0.0 0.0"/>
+            <parent link="laser_link"/>
+            <child link="laser_optical_frame"/>
+        </joint>
+
+        <!-- Laser joint -->
+        <joint name="joint_laser" type="fixed">
+            <origin xyz="0.12 0.0 0.077" rpy="0.0 0.0 0.0"/>
+            <parent link="chassis"/>
+            <child link="laser_link"/>
+        </joint>
+
+        <!-- Gazebo material - Colour-->
+        <gazebo reference="laser_link">
+            <material>Gazebo/Grey</material>
+        </gazebo>
+        
+        <!-- Gazebo Laser Scanner Plugin -->
+        <gazebo reference="laser_optical_frame">
+            <!-- <sensor type="ray" name="laser_scanner_${robot_name}"> -->
+            <sensor type="ray" name="laser_scanner">
+                <pose>0 0 0 0 0 0</pose>
+                <update_rate>10</update_rate>
+                <ray>
+                    <scan>
+                        <horizontal>
+                            <samples>360</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-3.14159</min_angle>
+                            <max_angle>3.14159</max_angle>
+                            <!-- <min_angle>-1.57</min_angle>  
+                            <max_angle>1.57</max_angle>    -->
+                        </horizontal>
+                    </scan>
+                    <range>
+                        <!-- <min>0.1</min> -->
+                        <min>0.05</min>
+                        <!-- <max>5.0</max> -->
+                        <max>10.0</max>
+                        <resolution>0.01</resolution>
+                    </range>
+                    <noise>
+                        <type>gaussian</type>
+                        <mean>0.0</mean>
+                        <stddev>0.01</stddev>
+                    </noise>
+                </ray>
+                <always_on>true</always_on>
+                <visualize>true</visualize>
+                <!-- <plugin name="gazebo_ros_laser_${robot_name}" filename="libgazebo_ros_ray_sensor.so"> -->
+                <plugin name="gazebo_ros_laser_" filename="libgazebo_ros_ray_sensor.so">
+                    <topicName>/scan</topicName>
+                    <!-- <output_type>sensor_msgs/LaserScan</output_type> -->
+                    <ros>
+                        <!-- <namespace>/${robot_name}</namespace> -->
+                        <namespace>/</namespace>
+                        <remapping>~/out:=scan</remapping>
+                    </ros>
+                <frame_name>laser_optical_frame</frame_name>
+                </plugin>
+            </sensor>
+        </gazebo>
+
+    </xacro:if>
+
+  </xacro:macro>
+
+</robot>

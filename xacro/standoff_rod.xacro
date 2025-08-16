@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Standoff post macro -->
+  <xacro:macro name="standoff_rod" params="prefix rod_radius rod_height x_reflect y_reflect">
+    
+    <!-- Xacro properties for wheel dimensions -->
+    <xacro:property name="x_pos" value="0.065"/>
+    <xacro:property name="y_pos" value="0.12"/>
+    <xacro:property name="z_pos" value="0.1875"/>
+    
+    <link name="standoff_${prefix}">
+        <visual>
+            <geometry>
+                <cylinder radius="${rod_radius}" length="${rod_height}"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="0.00040583333333333335" ixy="0" ixz="0" iyy="0.00040583333333333335" iyz="0" izz="5e-06"/>
+        </inertial>
+        <collision>
+            <geometry>
+                <cylinder length="${rod_radius}" radius="${rod_height}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="joint_standoff_${prefix}" type="fixed">
+        <origin rpy="0 0 0" xyz="${x_reflect * x_pos} ${y_reflect * y_pos} ${z_pos}"/>
+        <child link="standoff_${prefix}"/>
+        <parent link="chassis"/>
+    </joint>
+
+    <gazebo reference="standoff_${prefix}">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>
