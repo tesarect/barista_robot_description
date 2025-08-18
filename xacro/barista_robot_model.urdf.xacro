@@ -157,9 +157,7 @@
 
 
             <!-- kinematics -->
-            <!-- <wheel_separation>0.3006</wheel_separation> -->
-            <!-- <wheel_separation>0.28</wheel_separation> -->
-            <wheel_separation>0.1</wheel_separation>
+            <wheel_separation>0.28</wheel_separation>
             <wheel_diameter>0.0704</wheel_diameter>
 
             <!-- limits -->
