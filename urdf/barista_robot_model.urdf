@@ -574,7 +574,7 @@
             <visualize>true</visualize>
             <plugin name="gazebo_ros_laser" filename="libgazebo_ros_ray_sensor.so">
                 <topicName>/scan</topicName>
-                <!-- <output_type>sensor_msgs/LaserScan</output_type> -->
+                <output_type>sensor_msgs/LaserScan</output_type>
                 <ros>
                     <namespace>/</namespace>
                     <remapping>~/out:=scan</remapping>
@@ -618,7 +618,7 @@
             <!-- kinematics -->
             <!-- <wheel_separation>0.3006</wheel_separation> -->
             <!-- <wheel_separation>0.28</wheel_separation> -->
-            <wheel_separation>0.1</wheel_separation>
+            <wheel_separation>0.28</wheel_separation>
             <wheel_diameter>0.0704</wheel_diameter>
 
             <!-- limits -->

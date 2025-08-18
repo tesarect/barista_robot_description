@@ -7,9 +7,8 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /TF1
         - /TF1/Frames1
-        - /PointCloud21/Topic1
+        - /LaserScan1
       Splitter Ratio: 0.5
     Tree Height: 558
   - Class: rviz_common/Selection
@@ -29,7 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: LaserScan
 Visualization Manager:
   Class: ""
   Displays:
@@ -241,14 +240,14 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 0.6675910949707031
-        Min Value: -0.4111347198486328
+        Max Value: 10
+        Min Value: -10
         Value: true
-      Axis: X
+      Axis: Z
       Channel Name: intensity
-      Class: rviz_default_plugins/PointCloud2
+      Class: rviz_default_plugins/LaserScan
       Color: 255; 255; 255
-      Color Transformer: AxisColor
+      Color Transformer: Intensity
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -256,18 +255,18 @@ Visualization Manager:
       Max Intensity: 0
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: PointCloud2
+      Name: LaserScan
       Position Transformer: XYZ
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.019999999552965164
       Style: Flat Squares
       Topic:
         Depth: 5
         Durability Policy: Volatile
         Filter size: 10
         History Policy: Keep Last
-        Reliability Policy: Best Effort
+        Reliability Policy: Reliable
         Value: /scan
       Use Fixed Frame: true
       Use rainbow: true
@@ -318,7 +317,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.4227327108383179
+      Distance: 3.5226340293884277
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
