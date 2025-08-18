@@ -97,7 +97,8 @@
     <!-- Caster Wheels -->
     <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro"/>
 
-    <xacro:caster_wheel/>
+    <xacro:caster_wheel prefix="front" x_pos="0.12"/>
+    <xacro:caster_wheel prefix="back" x_pos="-0.12"/>
 
     <!-- Cup Holder Tray -->
     <xacro:include filename="$(find barista_robot_description)/xacro/cup_holder_tray.xacro"/>
