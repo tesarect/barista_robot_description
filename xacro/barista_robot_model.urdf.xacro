@@ -3,10 +3,10 @@
 
     <!-- Declare arguments -->
     <!-- <xacro:arg name="robot_name" default="barista_robot"/> -->
-    <xacro:arg name="colour" default="Gazebo/Blue"/>
+    <!-- <xacro:arg name="colour" default="Gazebo/Blue"/> -->
 
     <!-- Create properties from arguments -->
-    <!-- <xacro:property name="robot_name" value="$(arg robot_name)"/> -->
+    <xacro:property name="robot_name" value="$(arg robot_name)"/>
     <xacro:property name="colour" value="$(arg colour)"/>
 
     <xacro:arg name="include_laser" default="true"/>
