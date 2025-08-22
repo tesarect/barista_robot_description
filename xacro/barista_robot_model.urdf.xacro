@@ -59,10 +59,10 @@
             <!-- <material name="blue"/> -->
             <material name="${robot_name}_material">
                 <xacro:if value="${robot_name == 'rick'}">
-                    <color rgba="0.0 0.0 1.0 1.0"/>  <!-- Blue -->
+                    <color rgba="1.0 0.0 0.0 1.0"/>  <!-- Red -->
                 </xacro:if>
                 <xacro:if value="${robot_name == 'morty'}">
-                    <color rgba="1.0 0.0 0.0 1.0"/>  <!-- Red -->
+                    <color rgba="0.0 0.0 1.0 1.0"/>  <!-- Blue -->
                 </xacro:if>
             </material>
         </visual>
