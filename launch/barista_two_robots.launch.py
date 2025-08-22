@@ -45,29 +45,6 @@ def generate_launch_description():
     print("GAZEBO MODELS PATH=="+str(os.environ["GAZEBO_MODEL_PATH"]))
     print("GAZEBO PLUGINS PATH=="+str(os.environ["GAZEBO_PLUGIN_PATH"]))
 
-#     # Declare a new launch argument for the world file
-#     world_file_arg = DeclareLaunchArgument(
-#         'world',
-#         default_value=[get_package_share_directory(
-#             'my_box_bot_gazebo'), '/worlds/cafe.world'],
-#         description='Path to the Gazebo world file'
-#     )
-
-#     # Define the launch arguments for the Gazebo launch file
-#     gazebo_launch_args = {
-#         'verbose': 'false',
-#         'pause': 'false',
-#         'world': LaunchConfiguration('world')
-#     }
-
-#    # Include the Gazebo launch file with the modified launch arguments
-# This section is from urdf launch file
-    # gazebo = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource([os.path.join(
-    #         get_package_share_directory('barista_robot_description'), 'launch', 'start_cafe_world.launch.py')]),
-    #     launch_arguments={'verbose': 'false'}.items()
-    # )
-
     ####### DATA INPUT END ##########
     print("Fetching XACRO ==>")
     robot_desc_path = os.path.join(get_package_share_directory(package_description), "xacro", xacro_file)
@@ -85,6 +62,7 @@ def generate_launch_description():
         namespace=rick_robot,
         emulate_tty=True,
         parameters=[{
+                'frame_prefix': rick_robot+'/',
                 'use_sim_time': True, 
                 'robot_description': ParameterValue(Command(['xacro ', robot_desc_path,
                                                             ' robot_name:=', rick_robot,
@@ -103,6 +81,7 @@ def generate_launch_description():
         namespace=morty_robot,
         emulate_tty=True,
         parameters=[{
+                'frame_prefix': morty_robot+'/',
                 'use_sim_time': True, 
                 'robot_description': ParameterValue(Command(['xacro ', robot_desc_path,
                                                             ' robot_name:=', morty_robot,
@@ -171,7 +150,7 @@ def generate_launch_description():
     print("Fetching XACRO ==>  spawning in gazebo world DONE")
 
     # RVIZ Configuration
-    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'barista_model.rviz')
+    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'rick_and_morty.rviz')
 
     rviz_node = Node(
         package='rviz2',
@@ -180,6 +159,21 @@ def generate_launch_description():
         name='rviz_node',
         parameters=[{'use_sim_time': use_sim_time}],
         arguments=['-d', rviz_config_dir] if os.path.exists(rviz_config_dir) else []
+    )
+
+    # Static transform publishers to connect rick and morty to world
+    rick_world_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        arguments=['0', '0', '0', '0', '0', '0', 'map', rick_robot + '/odom'],
+        
+        output='screen'
+    )
+    morty_world_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher', 
+        arguments=['0', '0', '0', '0', '0', '0', 'map', morty_robot + '/odom'],
+        output='screen'
     )
 
     print("Fetching XACRO ==>  rviz DONE")
@@ -194,5 +188,7 @@ def generate_launch_description():
         morty_joint_state_publisher_node,  
         spawn_rick,
         spawn_morty,
+        rick_world_tf,
+        morty_world_tf,
         rviz_node
     ])

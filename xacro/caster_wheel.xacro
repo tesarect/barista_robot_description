@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Caster wheel macro -->
-  <xacro:macro name="caster_wheel" params="prefix x_pos">
+  <xacro:macro name="caster_wheel" params="prefix x_pos robot_name">
     
     <!-- Properties -->
     <xacro:property name="wheel_radius" value="0.0352"/>
@@ -10,6 +10,7 @@
     <xacro:property name="wheel_mass" value="0.1"/>
     
     <!-- Yaw link -->
+    <!-- <link name="${robot_name}/${prefix}_yaw_link"> -->
     <link name="${prefix}_yaw_link">
         <visual>
             <geometry>
@@ -30,8 +31,10 @@
         </inertial>
     </link>
 
-    <joint name="${prefix}_yaw_joint" type="fixed">
+    <joint name="${robot_name}/${prefix}_yaw_joint" type="fixed">
         <origin rpy="0 1.5707 1.5707" xyz="${x_pos} 0.0 -0.070" />
+        <!-- <parent link="${robot_name}/chassis" />
+        <child link="${robot_name}/${prefix}_yaw_link" /> -->
         <parent link="chassis" />
         <child link="${prefix}_yaw_link" />
         <axis xyz="0 1 0" />
@@ -114,11 +117,5 @@
     </gazebo>
 
   </xacro:macro>
-
-  <!-- Need to check this way of implementation too -->
-  <!-- <xacro:macro name="caster_wheel">
-    <xacro:caster_wheel prefix="front" x_pos="0.12"/>
-    <xacro:caster_wheel prefix="back" x_pos="-0.12"/>
-  </xacro:macro> -->
 
 </robot>

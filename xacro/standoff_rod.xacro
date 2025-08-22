@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Standoff post macro -->
-  <xacro:macro name="standoff_rod" params="prefix rod_radius rod_height x_reflect y_reflect">
+  <xacro:macro name="standoff_rod" params="prefix rod_radius rod_height x_reflect y_reflect robot_name">
     
     <!-- Xacro properties for wheel dimensions -->
     <xacro:property name="x_pos" value="0.065"/>
@@ -22,7 +22,7 @@
         </inertial>
         <collision>
             <geometry>
-                <cylinder length="${rod_radius}" radius="${rod_height}"/>
+                <cylinder radius="${rod_radius}" length="${rod_height}"/>
             </geometry>
         </collision>
     </link>

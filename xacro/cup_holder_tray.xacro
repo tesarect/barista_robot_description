@@ -2,8 +2,20 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Cupholder tray macro -->
-  <xacro:macro name="cup_holder_tray" params="colour">
+  <xacro:macro name="cup_holder_tray" params="colour robot_name">
     
+    <xacro:if value="${robot_name == 'rick'}">
+        <material name="sep_colour">
+            <color rgba="0.0 0.0 1.0 1.0"/> <!--  Blue -->
+        </material>
+    </xacro:if>
+
+    <xacro:if value="${robot_name == 'morty'}">
+        <material name="sep_colour">
+            <color rgba="1.0 0.0 0.0 1.0"/> <!--  Red -->
+        </material>
+    </xacro:if>
+
     <!-- Xacro properties for wheel dimensions -->
     <xacro:property name="tray_radius" value="0.160"/>
     <xacro:property name="tray_height" value="0.090"/>
@@ -13,7 +25,15 @@
             <geometry>
                 <cylinder length="${tray_height}" radius="${tray_radius}"/>
             </geometry>
-            <material name="blue"/>
+            <!-- <material name="blue"/> -->
+            <material name="${robot_name}_material">
+                <xacro:if value="${robot_name == 'rick'}">
+                    <color rgba="0.0 0.0 1.0 1.0"/>  <!-- Blue -->
+                </xacro:if>
+                <xacro:if value="${robot_name == 'morty'}">
+                    <color rgba="1.0 0.0 0.0 1.0"/>  <!-- Red -->
+                </xacro:if>
+            </material>
         </visual>
 
         <collision>

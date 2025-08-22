@@ -2,8 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <!-- Laser Scanner macro -->
-    <!-- <xacro:macro name="laser_scanner" params="include_laser robot_name"> -->
-    <xacro:macro name="laser_scanner" params="include_laser">
+    <xacro:macro name="laser_scanner" params="include_laser robot_name">
     
     <!-- Only create laser if include_laser is true -->
     <xacro:if value="${include_laser}">
@@ -50,8 +49,7 @@
         
         <!-- Gazebo Laser Scanner Plugin -->
         <gazebo reference="laser_optical_frame">
-            <!-- <sensor type="ray" name="laser_scanner_${robot_name}"> -->
-            <sensor type="ray" name="laser_scanner">
+            <sensor type="ray" name="${robot_name}_laser_scanner">
                 <pose>0 0 0 0 0 0</pose>
                 <update_rate>10</update_rate>
                 <ray>
@@ -80,16 +78,13 @@
                 </ray>
                 <always_on>true</always_on>
                 <visualize>true</visualize>
-                <!-- <plugin name="gazebo_ros_laser_${robot_name}" filename="libgazebo_ros_ray_sensor.so"> -->
-                <plugin name="gazebo_ros_laser_" filename="libgazebo_ros_ray_sensor.so">
-                    <topicName>/scan</topicName>
+                <plugin name="${robot_name}_gazebo_ros_laser" filename="libgazebo_ros_ray_sensor.so">
                     <output_type>sensor_msgs/LaserScan</output_type>
                     <ros>
-                        <!-- <namespace>/${robot_name}</namespace> -->
-                        <namespace>/</namespace>
+                        <namespace>/${robot_name}</namespace>
                         <remapping>~/out:=scan</remapping>
                     </ros>
-                <frame_name>laser_optical_frame</frame_name>
+                    <frame_name>${robot_name}/laser_optical_frame</frame_name>
                 </plugin>
             </sensor>
         </gazebo>

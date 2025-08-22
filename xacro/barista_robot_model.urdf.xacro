@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
+<!-- <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot"> -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="$(arg robot_name)">
 
-    <!-- Declare arguments -->
-    <!-- <xacro:arg name="robot_name" default="barista_robot"/> -->
-    <!-- <xacro:arg name="colour" default="Gazebo/Blue"/> -->
+    <!-- Accept arguments from launch file -->
+    <xacro:arg name="robot_name" default="barista_robot"/>
+    <xacro:arg name="colour" default="Gazebo/Black"/>
 
     <!-- Create properties from arguments -->
     <xacro:property name="robot_name" value="$(arg robot_name)"/>
@@ -39,6 +40,7 @@
         <color rgba="1.0 1.0 1.0 1"/>
     </material>
 
+    <!-- <link name="${robot_name}/base_link"> -->
     <link name="base_link">
         <inertial>
             <origin xyz="0 0 0.5" rpy="0 0 0"/>
@@ -48,12 +50,21 @@
     </link>
 
     <!-- chassis -->
+    <!-- <link name="${robot_name}/chassis"> -->
     <link name="chassis">
         <visual>
             <geometry>
                 <cylinder length="0.155" radius="0.178"/>
             </geometry>
-            <material name="blue"/>
+            <!-- <material name="blue"/> -->
+            <material name="${robot_name}_material">
+                <xacro:if value="${robot_name == 'rick'}">
+                    <color rgba="0.0 0.0 1.0 1.0"/>  <!-- Blue -->
+                </xacro:if>
+                <xacro:if value="${robot_name == 'morty'}">
+                    <color rgba="1.0 0.0 0.0 1.0"/>  <!-- Red -->
+                </xacro:if>
+            </material>
         </visual>
         <collision>
             <geometry>
@@ -83,44 +94,45 @@
     <!-- Drive Wheel -->
     <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
 
-    <xacro:drive_wheel prefix="left" reflect="1"/>
-    <xacro:drive_wheel prefix="right" reflect="-1"/>
+    <xacro:drive_wheel prefix="left" reflect="1" robot_name="${robot_name}"/>
+    <xacro:drive_wheel prefix="right" reflect="-1" robot_name="${robot_name}"/>
 
     <!-- Standoff Post -->
     <xacro:include filename="$(find barista_robot_description)/xacro/standoff_rod.xacro"/>
 
-    <xacro:standoff_rod prefix="front_left" rod_radius="0.010" rod_height="0.220" x_reflect="1" y_reflect="1"/>
-    <xacro:standoff_rod prefix="front_right" rod_radius="0.010" rod_height="0.220" x_reflect="1" y_reflect="-1"/>
-    <xacro:standoff_rod prefix="back_left" rod_radius="0.010" rod_height="0.220" x_reflect="-1" y_reflect="1"/>
-    <xacro:standoff_rod prefix="back_right" rod_radius="0.010" rod_height="0.220" x_reflect="-1" y_reflect="-1"/>
+    <xacro:standoff_rod prefix="front_left" rod_radius="0.010" rod_height="0.220" x_reflect="1" y_reflect="1" robot_name="${robot_name}"/>
+    <xacro:standoff_rod prefix="front_right" rod_radius="0.010" rod_height="0.220" x_reflect="1" y_reflect="-1" robot_name="${robot_name}"/>
+    <xacro:standoff_rod prefix="back_left" rod_radius="0.010" rod_height="0.220" x_reflect="-1" y_reflect="1" robot_name="${robot_name}"/>
+    <xacro:standoff_rod prefix="back_right" rod_radius="0.010" rod_height="0.220" x_reflect="-1" y_reflect="-1" robot_name="${robot_name}"/>
 
     <!-- Caster Wheels -->
     <xacro:include filename="$(find barista_robot_description)/xacro/caster_wheel.xacro"/>
 
-    <xacro:caster_wheel prefix="front" x_pos="0.12"/>
-    <xacro:caster_wheel prefix="back" x_pos="-0.12"/>
+    <xacro:caster_wheel prefix="front" x_pos="0.12" robot_name="${robot_name}"/>
+    <xacro:caster_wheel prefix="back" x_pos="-0.12" robot_name="${robot_name}"/>
 
     <!-- Cup Holder Tray -->
     <xacro:include filename="$(find barista_robot_description)/xacro/cup_holder_tray.xacro"/>
 
     <!-- <xacro:cup_holder_tray colour="Gazebo/Blue" /> -->
-    <xacro:cup_holder_tray colour="${colour}" />
+            <!-- <material name="${robot_name}_colour"/> -->
+    <xacro:cup_holder_tray colour="${colour}" robot_name="${robot_name}"/>
 
     <!-- Laser Scanner -->
     <xacro:include filename="$(find barista_robot_description)/xacro/laser_scanner.xacro"/>
 
     <!-- Include laser with default behavior -->
-    <!-- <xacro:laser_scanner include_laser="true" robot_name="$(arg robot_name)"/> -->
-    <xacro:laser_scanner include_laser="$(arg include_laser)" />
-    <!-- <xacro:laser_scanner include_laser="true" /> -->
+    <xacro:laser_scanner include_laser="true" robot_name="${robot_name}"/>
+    <!-- <xacro:laser_scanner include_laser="$(arg include_laser)" /> -->
 
     <!-- libgazebo_ros_joint_state_publisher -->
     <gazebo>
-        <plugin name="barista_robot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+        <!-- <plugin name="barista_robot_joint_state" filename="libgazebo_ros_joint_state_publisher.so"> -->
+        <plugin name="${robot_name}_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
         
         <ros>
             <!-- <namespace>/${robot_name}</namespace> -->
-            <!-- <namespace>/</namespace> -->
+            <namespace>${robot_name}</namespace>
             <remapping>~/out:=joint_states</remapping>
         </ros>
 
@@ -143,11 +155,12 @@
     <gazebo>
         <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
             
-            <!-- <ros>
-                <namespace>/${robot_name}</namespace>
-                <namespace>/</namespace>
+            <ros>
+                <!-- <namespace>/${robot_name}</namespace>
+                <remapping>/cmd_vel:=cmd_vel</remapping> -->
+                <namespace>${robot_name}</namespace>
                 <remapping>/cmd_vel:=cmd_vel</remapping>
-            </ros> -->
+            </ros>
 
             <update_rate>30</update_rate>
             <!-- wheels -->
@@ -165,16 +178,16 @@
             <max_wheel_acceleration>2.0</max_wheel_acceleration>
 
             <!-- Receive velocity commands on this ROS topic -->
-            <command_topic>cmd_vel</command_topic>
+            <!-- <command_topic>cmd_vel</command_topic> -->
 
             <!-- output -->
             <publish_odom>true</publish_odom>
             <publish_odom_tf>true</publish_odom_tf>
 
-            <!-- <odometry_frame>${robot_name}/odom</odometry_frame>
-            <robot_base_frame>${robot_name}/base_link</robot_base_frame> -->
-            <odometry_frame>odom</odometry_frame>
-            <robot_base_frame>base_link</robot_base_frame>
+            <odometry_frame>${robot_name}/odom</odometry_frame>
+            <robot_base_frame>${robot_name}/base_link</robot_base_frame>
+            <!-- <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame> -->
             <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
             <odometry_source>1</odometry_source>
             <!-- Set to true to publish transforms for the wheel links. -->
