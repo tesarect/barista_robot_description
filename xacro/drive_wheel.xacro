@@ -70,8 +70,8 @@
         <axis rpy="0 0 0" xyz="0 0 1"/>
         <limit effort="10000" velocity="1000"/>
         <!-- <joint_properties damping="3.0" friction="0.4"/> -->
-    <joint_properties damping="${physics_config['wheel_damping']}" 
-                     friction="${physics_config['wheel_friction']}"/>
+        <joint_properties damping="${physics_config['wheel_damping']}" 
+                        friction="${physics_config['wheel_friction']}"/>
     </joint>
 
   </xacro:macro>

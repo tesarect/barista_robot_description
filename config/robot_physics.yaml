@@ -11,7 +11,9 @@ robot_physics:
   wheel_damping: 0.2
   wheel_friction: 0.04
 
-  caster_damping: 0.5      # Steering smoothness
+  # caster_damping: 0.5      # Steering smoothness
+  # caster_friction: 0.1     # Rolling resistance
+  caster_damping: 0.0      # Steering smoothness
   caster_friction: 0.1     # Rolling resistance
   
   # Differential drive
@@ -40,3 +42,11 @@ robot_physics:
   wheel_ixx_factor: 0.00001
   wheel_iyy_factor: 0.00001
   wheel_izz_factor: 0.00002
+
+  caster_yr_ixx: 0.0000031184
+  caster_yr_iyy: 0.0000031184
+  caster_yr_izz: 0.000006195
+
+  caster_p_ixx: 0.00000826
+  caster_p_iyy: 0.00000826
+  caster_p_izz: 0.00000826
