@@ -41,26 +41,10 @@
 
     <gazebo reference="${prefix}_wheel">
         <material>Gazebo/Black</material>
-        <surface>
-            <friction>
-                <ode>
-                    <mu>1.5</mu> 
-                    <mu2>1.5</mu2> 
-                    <slip1>0.01</slip1> 
-                    <slip2>0.01</slip2>
-                </ode>
-            </friction>
-            <contact>
-                <ode>
-                    <kp>1000.0</kp> 
-                    <kd>1.0</kd> 
-                    <soft_cfm>0.0</soft_cfm>
-                    <soft_erp>0.2</soft_erp>
-                    <max_vel>0.01</max_vel>
-                    <min_depth>0.001</min_depth>
-                </ode>
-            </contact>
-        </surface>
+        <mu>${physics_config['drive_mu']}</mu> 
+        <mu2>${physics_config['drive_mu']}</mu2> 
+        <kp>${physics_config['drive_kp']}</kp> 
+        <kd>${physics_config['drive_kd']}</kd> 
     </gazebo>
 
     <joint name="joint_${prefix}_wheel" type="continuous">
