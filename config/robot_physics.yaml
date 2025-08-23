@@ -1,0 +1,42 @@
+robot_physics:
+  # Primary Masses (for stability)
+  base_mass: 1.0
+  chassis_mass: 0.3
+  wheel_mass: 0.05
+  caster_mass: 0.02
+  
+  # Motion Dynamics (smooth movement - Joint dynamics)
+  # wheel_damping: 0.1
+  # wheel_friction: 0.02
+  wheel_damping: 0.2
+  wheel_friction: 0.04
+
+  caster_damping: 0.5      # Steering smoothness
+  caster_friction: 0.1     # Rolling resistance
+  
+  # Differential drive
+  max_wheel_torque: 2.0
+  max_wheel_acceleration: 0.5
+  max_linear_velocity: 1.0
+  max_angular_velocity: 2.0
+  update_rate: 50
+  
+  # Wheel-Contact Physics (traction)
+  drive_mu: 1.5                # Drive wheel friction
+  caster_mu: 0.1               # Caster friction (low for easy steering)
+  drive_slip: 0.01
+  caster_slip: 0.5
+  kp: 1000.0
+  kd: 10.0
+  
+  # Inertia scaling factors
+  base_ixx_factor: 0.002
+  base_iyy_factor: 0.002  
+  base_izz_factor: 0.003
+
+  # wheel_ixx_factor: 0.000001
+  # wheel_iyy_factor: 0.000001
+  # wheel_izz_factor: 0.000002
+  wheel_ixx_factor: 0.00001
+  wheel_iyy_factor: 0.00001
+  wheel_izz_factor: 0.00002

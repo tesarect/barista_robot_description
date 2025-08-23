@@ -50,9 +50,9 @@ def generate_launch_description():
     robot_desc_path = os.path.join(get_package_share_directory(package_description), "xacro", xacro_file)
 
     rick_robot = "rick"
-    rick_colour = "Gazebo/Blue"
+    rick_colour = "Gazebo/Red"
     morty_robot = "morty"
-    morty_colour = "Gazebo/Red"
+    morty_colour = "Gazebo/Blue"
 
     # Rick's Robot State Publisher
     rick_robot_state_publisher_node = Node(
@@ -92,7 +92,7 @@ def generate_launch_description():
         output="screen"
     )
 
-    print("Fetching XACRO ==>  Rick & Morties robot_state_publisher DONE")
+    print("Fetching XACRO ==>==>==>==>  Rick & Morties robot_state_publisher DONE")
 
     # Joint State Publisher for rick
     rick_joint_state_publisher_node = Node(

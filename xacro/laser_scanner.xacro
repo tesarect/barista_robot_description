@@ -22,8 +22,10 @@
             </collision>
             
             <inertial>
-                <mass value="0.3"/>
-                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.0005"/>
+                <!-- <mass value="0.3"/>
+                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.0005"/> -->
+                <mass value="0.01"/>
+                <inertia ixx="6.066578520833334e-06" ixy="0" ixz="0" iyy="6.072950163333333e-06" iyz="0" izz="9.365128684166666e-06"/>
             </inertial>
         </link>
 
@@ -52,10 +54,12 @@
             <sensor type="ray" name="${robot_name}_laser_scanner">
                 <pose>0 0 0 0 0 0</pose>
                 <update_rate>10</update_rate>
+                <always_on>true</always_on>
+                <visualize>true</visualize>
                 <ray>
                     <scan>
                         <horizontal>
-                            <samples>360</samples>
+                            <samples>200</samples>
                             <resolution>1</resolution>
                             <min_angle>-3.14159</min_angle>
                             <max_angle>3.14159</max_angle>
@@ -76,8 +80,6 @@
                         <stddev>0.01</stddev>
                     </noise>
                 </ray>
-                <always_on>true</always_on>
-                <visualize>true</visualize>
                 <plugin name="${robot_name}_gazebo_ros_laser" filename="libgazebo_ros_ray_sensor.so">
                     <output_type>sensor_msgs/LaserScan</output_type>
                     <ros>

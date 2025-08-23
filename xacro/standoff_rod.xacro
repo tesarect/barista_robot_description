@@ -17,8 +17,10 @@
             <material name="black"/>
         </visual>
         <inertial>
-            <mass value="0.1"/>
-            <inertia ixx="0.00040583333333333335" ixy="0" ixz="0" iyy="0.00040583333333333335" iyz="0" izz="5e-06"/>
+            <mass value="0.02"/>
+            <inertia ixx="0.00008117" ixy="0" ixz="0"
+                     iyy="0.00008117" iyz="0"
+                     izz="0.000001"/>
         </inertial>
         <collision>
             <geometry>

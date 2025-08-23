@@ -48,19 +48,149 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz_default_plugins/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        map:
+          Value: true
+        morty/back_pitch_link:
+          Value: true
+        morty/back_roll_link:
+          Value: true
+        morty/back_yaw_link:
+          Value: true
+        morty/base_link:
+          Value: true
+        morty/chassis:
+          Value: true
+        morty/cup_holder_tray:
+          Value: true
+        morty/front_pitch_link:
+          Value: true
+        morty/front_roll_link:
+          Value: true
+        morty/front_yaw_link:
+          Value: true
+        morty/laser_link:
+          Value: true
+        morty/laser_optical_frame:
+          Value: true
+        morty/left_wheel:
+          Value: true
+        morty/odom:
+          Value: true
+        morty/right_wheel:
+          Value: true
+        morty/standoff_back_left:
+          Value: true
+        morty/standoff_back_right:
+          Value: true
+        morty/standoff_front_left:
+          Value: true
+        morty/standoff_front_right:
+          Value: true
+        rick/back_pitch_link:
+          Value: true
+        rick/back_roll_link:
+          Value: true
+        rick/back_yaw_link:
+          Value: true
+        rick/base_link:
+          Value: true
+        rick/chassis:
+          Value: true
+        rick/cup_holder_tray:
+          Value: true
+        rick/front_pitch_link:
+          Value: true
+        rick/front_roll_link:
+          Value: true
+        rick/front_yaw_link:
+          Value: true
+        rick/laser_link:
+          Value: true
+        rick/laser_optical_frame:
+          Value: true
+        rick/left_wheel:
+          Value: true
+        rick/odom:
+          Value: true
+        rick/right_wheel:
+          Value: true
+        rick/standoff_back_left:
+          Value: true
+        rick/standoff_back_right:
+          Value: true
+        rick/standoff_front_left:
+          Value: true
+        rick/standoff_front_right:
+          Value: true
       Marker Scale: 0.4000000059604645
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        map:
+          morty/odom:
+            morty/base_link:
+              morty/chassis:
+                morty/back_yaw_link:
+                  morty/back_roll_link:
+                    morty/back_pitch_link:
+                      {}
+                morty/cup_holder_tray:
+                  {}
+                morty/front_yaw_link:
+                  morty/front_roll_link:
+                    morty/front_pitch_link:
+                      {}
+                morty/laser_link:
+                  morty/laser_optical_frame:
+                    {}
+                morty/left_wheel:
+                  {}
+                morty/right_wheel:
+                  {}
+                morty/standoff_back_left:
+                  {}
+                morty/standoff_back_right:
+                  {}
+                morty/standoff_front_left:
+                  {}
+                morty/standoff_front_right:
+                  {}
+          rick/odom:
+            rick/base_link:
+              rick/chassis:
+                rick/back_yaw_link:
+                  rick/back_roll_link:
+                    rick/back_pitch_link:
+                      {}
+                rick/cup_holder_tray:
+                  {}
+                rick/front_yaw_link:
+                  rick/front_roll_link:
+                    rick/front_pitch_link:
+                      {}
+                rick/laser_link:
+                  rick/laser_optical_frame:
+                    {}
+                rick/left_wheel:
+                  {}
+                rick/right_wheel:
+                  {}
+                rick/standoff_back_left:
+                  {}
+                rick/standoff_back_right:
+                  {}
+                rick/standoff_front_left:
+                  {}
+                rick/standoff_front_right:
+                  {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -127,7 +257,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
@@ -156,7 +285,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         laser_link:
           Alpha: 1
           Show Axes: false
@@ -270,7 +398,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
@@ -299,7 +426,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         laser_link:
           Alpha: 1
           Show Axes: false

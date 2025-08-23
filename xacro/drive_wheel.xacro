@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- Drive wheel macro -->
-  <xacro:macro name="drive_wheel" params="prefix reflect robot_name">
-    
+    <!-- Load physics parameters -->
+    <xacro:include filename="$(find barista_robot_description)/xacro/physics_properties.xacro"/>
+
+    <!-- Drive wheel macro --> 
+    <xacro:macro name="drive_wheel" params="prefix reflect robot_name">
+        
     <!-- Xacro properties for wheel dimensions -->
     <xacro:property name="wheel_radius" value="0.0352"/>
     <xacro:property name="wheel_width" value="0.0206"/>
@@ -13,7 +16,7 @@
             <geometry>
                 <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
             </geometry>
-            <material name="red"/>
+            <material name="black"/>
         </visual>
         
         <collision>
@@ -23,24 +26,52 @@
         </collision>
         
         <inertial>
-            <mass value="0.07"/>
-            <inertia ixx="2.4158633333333336e-05" ixy="0" ixz="0" 
-                     iyy="2.4158633333333336e-05" iyz="0" 
-                     izz="4.3366400000000005e-05"/>
+            <!-- <mass value="0.05"/> 
+            <inertia ixx="0.000005752" ixy="0" ixz="0" 
+                    iyy="0.000005752" iyz="0" 
+                    izz="0.000010325"/> -->
+            <mass value="${physics_config['wheel_mass']}"/>
+            <inertia ixx="${physics_config['wheel_mass'] * physics_config['wheel_ixx_factor']}" 
+                    iyy="${physics_config['wheel_mass'] * physics_config['wheel_iyy_factor']}" 
+                    izz="${physics_config['wheel_mass'] * physics_config['wheel_izz_factor']}"
+                    ixy="0" ixz="0" iyz="0"/>
+
         </inertial>
     </link>
 
     <gazebo reference="${prefix}_wheel">
         <material>Gazebo/Black</material>
+        <surface>
+            <friction>
+                <ode>
+                    <mu>1.5</mu> 
+                    <mu2>1.5</mu2> 
+                    <slip1>0.01</slip1> 
+                    <slip2>0.01</slip2>
+                </ode>
+            </friction>
+            <contact>
+                <ode>
+                    <kp>1000.0</kp> 
+                    <kd>1.0</kd> 
+                    <soft_cfm>0.0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0.001</min_depth>
+                </ode>
+            </contact>
+        </surface>
     </gazebo>
 
     <joint name="joint_${prefix}_wheel" type="continuous">
         <origin rpy="1.5707 0 0" xyz="0.0 ${reflect * 0.14} -0.070"/>
         <child link="${prefix}_wheel"/>
         <parent link="chassis"/>
-        <axis rpy="0 0 0" xyz="0 1 0"/>
+        <axis rpy="0 0 0" xyz="0 0 1"/>
         <limit effort="10000" velocity="1000"/>
-        <joint_properties damping="0.5" friction="0.5"/>
+        <!-- <joint_properties damping="3.0" friction="0.4"/> -->
+    <joint_properties damping="${physics_config['wheel_damping']}" 
+                     friction="${physics_config['wheel_friction']}"/>
     </joint>
 
   </xacro:macro>
