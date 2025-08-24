@@ -11,8 +11,8 @@
     <xacro:property name="wheel_radius" value="0.0352"/>
     <xacro:property name="cylinder_length" value="0.010"/>
     <xacro:property name="wheel_mass" value="0.02"/>
-    <!-- <xacro:property name="joint_type" value="fixed"/> -->
-    <xacro:property name="joint_type" value="continuous"/>
+    <xacro:property name="joint_type" value="fixed"/>
+    <!-- <xacro:property name="joint_type" value="continuous"/> -->
 
     <!-- Yaw link -->
     <link name="${prefix}_yaw_link">

@@ -1,7 +1,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.parameter_descriptions import ParameterValue 
@@ -9,6 +9,8 @@ from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 from ament_index_python.packages import get_package_prefix
+
+
 
 def generate_launch_description():
 
@@ -44,6 +46,26 @@ def generate_launch_description():
 
     print("GAZEBO MODELS PATH=="+str(os.environ["GAZEBO_MODEL_PATH"]))
     print("GAZEBO PLUGINS PATH=="+str(os.environ["GAZEBO_PLUGIN_PATH"]))
+
+    # generate_physics_prop_yaml = "/home/user/ros2_ws/src/barista_robot_description/scripts/generate_physics_prop_yaml.py"
+    # value_history_file = "/home/user/ros2_ws/src/barista_robot_description/config/value_history.md"
+    # template_file = "/home/user/ros2_ws/src/barista_robot_description/config/template.yaml"
+    # output_file = "/home/user/ros2_ws/src/barista_robot_description/config/robot_physics.yaml"
+    # tabel = "0"
+    # focus_column = "Try2"
+
+    # ExecuteProcess(
+    #     cmd=[
+    #         "python3", 
+    #         generate_physics_prop_yaml, 
+    #         value_history_file, 
+    #         tabel, 
+    #         focus_column, 
+    #         template_file,
+    #         output_file
+    #     ],
+    #     output="screen"
+    # ),
 
     ####### DATA INPUT END ##########
     print("Fetching XACRO ==>")
@@ -162,7 +184,6 @@ def generate_launch_description():
         executable='rviz2',
         output='screen',
         name='rviz_node',
-        emulate_tty=True,
         parameters=[{'use_sim_time': use_sim_time}],
         arguments=['-d', rviz_config_dir] if os.path.exists(rviz_config_dir) else []
     )

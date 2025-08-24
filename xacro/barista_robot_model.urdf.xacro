@@ -166,8 +166,8 @@
             <!-- limits -->
             <max_wheel_torque>${physics_config['max_wheel_torque']}</max_wheel_torque>
             <max_wheel_acceleration>${physics_config['max_wheel_acceleration']}</max_wheel_acceleration>
-            <max_linear_velocity>${physics_config['max_linear_velocity']}</max_linear_velocity>
-            <max_angular_velocity>${physics_config['max_angular_velocity']}</max_angular_velocity>
+            <!-- <max_linear_velocity>${physics_config['max_linear_velocity']}</max_linear_velocity>
+            <max_angular_velocity>${physics_config['max_angular_velocity']}</max_angular_velocity> -->
 
             <!-- output -->
             <publish_odom>true</publish_odom>

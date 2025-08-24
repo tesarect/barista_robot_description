@@ -1,40 +1,49 @@
-| Attrs                  | Try 1        | Try 2   C    |
-|------------------------|--------------|--------------|
-| base_mass              | 1.0          | 1.0          |
-| chassis_mass           | 0.3          | 0.3          |
-| wheel_mass             | 0.05         | 0.05         |
-| caster_mass            | 0.02         | 0.02         |
-| wheel_damping          | 0.2          | 0.1          |
-| wheel_friction         | 0.04         | 0.02         |
-| caster_damping         | 0.0          | 0.5          |
-| caster_friction        | 0.1          | 0.05         |
-| max_wheel_torque       | 2.0          | 3.0          |
-| max_wheel_acceleration | 0.5          | 0.8          |
-| max_linear_velocity    | 1.0          | 1.0          |
-| max_angular_velocity   | 2.0          | 2.0          |
-| drive_mu               | 1.5          | 1.0          |
-| caster_mu              | 0.1          | 0.05         |
-| drive_slip             | 0.01         | 0.05         |
-| caster_slip            | 0.05         | 0.08         |
-| drive_kp               | 1000.0       | 1000.0       |
-| caster_kp              | 1000.0       | 1000.0       |
-| drive_kd               | 1.0          | 1.0          |
-| caster_kd              | 10.0         | 10.0         |
-| base_ixx_factor        | 0.002        | 0.002        |
-| base_iyy_factor        | 0.002        | 0.002        |
-| base_izz_factor        | 0.003        | 0.003        |
-| wheel_ixx_factor       | 0.00001      | 0.00001      |
-| wheel_iyy_factor       | 0.00001      | 0.00001      |
-| wheel_izz_factor       | 0.00002      | 0.00002      |
-| caster_yr_ixx          | 0.0000031184 | 0.0000031184 |
-| caster_yr_iyy          | 0.0000031184 | 0.0000031184 |
-| caster_yr_izz          | 0.000006195  | 0.000006195  |
-| caster_p_ixx           | 0.00000826   | 0.00000826   |
-| caster_p_iyy           | 0.00000826   | 0.00000826   |
-| caster_p_izz           | 0.00000826   | 0.00000826   |
+## value_table
+
+| Attrs                  | Try1         | Try2         | Try3         | Try4         | Try5         | Try6         |
+|------------------------|--------------|--------------|--------------|--------------|--------------|--------------|
+| base_mass              | 1.0          | 1.0          | 3.0          | 3.0          | 1.0          | 1.0          |
+| chassis_mass           | 0.3          | 0.3          | 1.0          | 1.0          | 0.3          | 0.3          |
+| wheel_mass             | 0.05         | 0.05         | 0.2          | 0.2          | 0.05         | 0.05         |
+| caster_mass            | 0.02         | 0.02         | 0.1          | 0.1          | 0.02         | 0.02         |
+| wheel_damping          | 0.2          | 0.1          | 2.0          | 0.8          | 0.15         | 0.5          |
+| wheel_friction         | 0.04         | 0.02         | 0.2          | 0.05         | 0.02         | 0.05         |
+| caster_damping         | 0.0          | 0.5          | 5.0          | 2.0          | 0.3          | 1.0          |
+| caster_friction        | 0.1          | 0.05         | 0.5          | 0.3          | 0.05         | 0.1          |
+| max_wheel_torque       | 2.0          | 3.0          | 0.5          | 1.5          | 5.0          | 3.0          |
+| max_wheel_acceleration | 0.5          | 0.8          | 0.1          | 0.3          | 0.8          | 0.6          |
+| max_linear_velocity    | 1.0          | 1.0          | 1.0          | 1.0          | 1.0          | 1.0          |
+| max_angular_velocity   | 2.0          | 2.0          | 2.0          | 2.0          | 2.0          | 2.0          |
+| drive_mu               | 1.5          | 1.0          | 0.5          | 0.8          | 0.8          | 1.0          |
+| caster_mu              | 0.1          | 0.05         | 0.01         | 0.01         | 0.01         | 0.02         |
+| drive_slip             | 0.01         | 0.05         | 0.2          | 0.1          | 0.15         | 0.12         |
+| caster_slip            | 0.05         | 0.08         | 0.95         | 0.95         | 0.9          | 0.95         |
+| drive_kp               | 1000.0       | 1000.0       | 50.0         | 50.0         | 500.0        | 300.0        |
+| caster_kp              | 1000.0       | 1000.0       | 10.0         | 10.0         | 100.0        | 50.0         |
+| drive_kd               | 1.0          | 1.0          | 20.0         | 20.0         | 5.0          | 10.0         |
+| caster_kd              | 10.0         | 10.0         | 10.0         | 10.0         | 5.0          | 8.0          |
+| base_ixx_factor        | 0.002        | 0.002        | 0.005        | 0.005        | 0.002        | 0.002        |
+| base_iyy_factor        | 0.002        | 0.002        | 0.005        | 0.005        | 0.002        | 0.002        |
+| base_izz_factor        | 0.003        | 0.003        | 0.008        | 0.008        | 0.003        | 0.003        |
+| wheel_ixx_factor       | 0.00001      | 0.00001      | 0.0001       | 0.0001       | 0.00001      | 0.00001      |
+| wheel_iyy_factor       | 0.00001      | 0.00001      | 0.0001       | 0.0001       | 0.00001      | 0.00001      |
+| wheel_izz_factor       | 0.00002      | 0.00002      | 0.0002       | 0.0002       | 0.00002      | 0.00002      |
+| caster_yr_ixx          | 0.0000031184 | 0.0000031184 | 0.0000031184 | 0.0000031184 | 0.0000031184 | 0.0000031184 |
+| caster_yr_iyy          | 0.0000031184 | 0.0000031184 | 0.0000031184 | 0.0000031184 | 0.0000031184 | 0.0000031184 |
+| caster_yr_izz          | 0.000006195  | 0.000006195  | 0.000006195  | 0.000006195  | 0.000006195  | 0.000006195  |
+| caster_p_ixx           | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   |
+| caster_p_iyy           | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   |
+| caster_p_izz           | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   | 0.00000826   |
+| diff_update_rate       | 60           | 50           | 20           | 20           | 50           | 50           |
+| jsp_update_rate        | 30           | 30           | 15           | 15           | 30           | 30           |
 
 
-| Attempts | Observation                                              |
-|----------|----------------------------------------------------------|
-| Try 1    | smooth and fast linera movement\. NO angular or rotation |
-| Try 2    | IN PROGRESS |
+## observation_table
+| Attempts | Observation                                              | Gazebo Crash |
+|----------|----------------------------------------------------------|--------------|
+| Try 1    | smooth and fast linera movement\. NO angular or rotation | No           |
+| Try 2    | same as try1 - no angular or turns able to be made       | No           |
+| Try 3    | No movement - but wheels and caster has no flickering    | No           |
+| Try 4    | No movement                                              | No           |
+| Try 5    | try1 + added tf noise + unstable while stationary        | No           |
+| Try 6 IP | try5 + reduced tf noise                                  | No           |

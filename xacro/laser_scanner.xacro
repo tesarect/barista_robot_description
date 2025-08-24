@@ -53,13 +53,13 @@
         <gazebo reference="laser_optical_frame">
             <sensor type="ray" name="${robot_name}_laser_scanner">
                 <pose>0 0 0 0 0 0</pose>
-                <update_rate>10</update_rate>
+                <update_rate>5</update_rate>
                 <always_on>true</always_on>
                 <visualize>true</visualize>
                 <ray>
                     <scan>
                         <horizontal>
-                            <samples>200</samples>
+                            <samples>100</samples>
                             <resolution>1</resolution>
                             <min_angle>-3.14159</min_angle>
                             <max_angle>3.14159</max_angle>
@@ -87,6 +87,7 @@
                         <remapping>~/out:=scan</remapping>
                     </ros>
                     <frame_name>${robot_name}/laser_optical_frame</frame_name>
+                    <always_on>true</always_on>
                 </plugin>
             </sensor>
         </gazebo>

@@ -115,11 +115,11 @@ Visualization Manager:
         rick/laser_optical_frame:
           Value: false
         rick/left_wheel:
-          Value: false
+          Value: true
         rick/odom:
           Value: false
         rick/right_wheel:
-          Value: false
+          Value: true
         rick/standoff_back_left:
           Value: false
         rick/standoff_back_right:
