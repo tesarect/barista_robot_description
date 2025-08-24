@@ -92,7 +92,7 @@ def generate_launch_description():
         output="screen"
     )
 
-    print("Fetching XACRO ==>==>==>==>  Rick & Morties robot_state_publisher DONE")
+    print("Fetching XACRO ==>  Rick & Morties robot_state_publisher DONE")
 
     # Joint State Publisher for rick
     rick_joint_state_publisher_node = Node(
@@ -100,6 +100,7 @@ def generate_launch_description():
         executable='joint_state_publisher',
         name='joint_state_publisher',
         namespace=rick_robot,
+        emulate_tty=True,
         parameters=[{'use_sim_time': use_sim_time}],
         output="screen"
     )
@@ -109,6 +110,7 @@ def generate_launch_description():
         executable='joint_state_publisher',
         name='joint_state_publisher',
         namespace=morty_robot,
+        emulate_tty=True,
         parameters=[{'use_sim_time': use_sim_time}],
         output="screen"
     )
@@ -128,6 +130,7 @@ def generate_launch_description():
     spawn_rick = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
+        emulate_tty=True,
         arguments=['-topic', '/'+rick_robot+'/robot_description',
                   '-entity', 'rick',
                   '-x', '0.5',
@@ -139,6 +142,7 @@ def generate_launch_description():
     spawn_morty = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
+        emulate_tty=True,
         arguments=['-topic', '/'+morty_robot+'/robot_description',
                   '-entity', 'morty',
                   '-x', '-0.5',
@@ -158,6 +162,7 @@ def generate_launch_description():
         executable='rviz2',
         output='screen',
         name='rviz_node',
+        emulate_tty=True,
         parameters=[{'use_sim_time': use_sim_time}],
         arguments=['-d', rviz_config_dir] if os.path.exists(rviz_config_dir) else []
     )
@@ -166,6 +171,7 @@ def generate_launch_description():
     rick_world_tf = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
+        emulate_tty=True,
         arguments=['0', '0', '0', '0', '0', '0', 'map', rick_robot + '/odom'],
         
         output='screen'
@@ -173,6 +179,7 @@ def generate_launch_description():
     morty_world_tf = Node(
         package='tf2_ros',
         executable='static_transform_publisher', 
+        emulate_tty=True,
         arguments=['0', '0', '0', '0', '0', '0', 'map', morty_robot + '/odom'],
         output='screen'
     )

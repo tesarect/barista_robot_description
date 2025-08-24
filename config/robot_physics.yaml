@@ -6,19 +6,15 @@ robot_physics:
   caster_mass: 0.02
   
   # Motion Dynamics (smooth movement - Joint dynamics)
-  # wheel_damping: 0.1
-  # wheel_friction: 0.02
-  wheel_damping: 0.2
-  wheel_friction: 0.04
+  wheel_damping: 0.1
+  wheel_friction: 0.02
 
-  # caster_damping: 0.5      # Steering smoothness
-  # caster_friction: 0.1     # Rolling resistance
-  caster_damping: 0.0      # Steering smoothness
-  caster_friction: 0.1     # Rolling resistance
+  caster_damping: 0.5      # Steering smoothness
+  caster_friction: 0.05     # Rolling resistance
   
   # Differential drive
-  max_wheel_torque: 2.0
-  max_wheel_acceleration: 0.5
+  max_wheel_torque: 3.0
+  max_wheel_acceleration: 0.8
   max_linear_velocity: 1.0
   max_angular_velocity: 2.0
   diff_update_rate: 50
@@ -27,11 +23,11 @@ robot_physics:
   jsp_update_rate: 30
   
   # Wheel-Contact Physics (traction)
-  drive_mu: 1.5                # Drive wheel friction
-  caster_mu: 0.1               # Caster friction (low for easy steering)
+  drive_mu: 1.0
+  caster_mu: 0.05
 
-  drive_slip: 0.01
-  caster_slip: 0.5
+  drive_slip: 0.05
+  caster_slip: 0.8
 
   drive_kp: 1000.0
   caster_kp: 1000.0
@@ -58,3 +54,4 @@ robot_physics:
 
 # v0.1 
 # smooth and fast linera movement - NO angular or rotation
+# Updated robot_physics.yaml for better angular motion
