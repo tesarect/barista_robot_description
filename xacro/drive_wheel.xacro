@@ -26,15 +26,19 @@
         </collision>
         
         <inertial>
-            <!-- <mass value="0.05"/> 
-            <inertia ixx="0.000005752" ixy="0" ixz="0" 
-                    iyy="0.000005752" iyz="0" 
-                    izz="0.000010325"/> -->
             <mass value="${physics_config['wheel_mass']}"/>
-            <inertia ixx="${physics_config['wheel_mass'] * physics_config['wheel_ixx_factor']}" 
+            <!-- <inertia ixx="${physics_config['wheel_ixx_factor']}" 
+                     iyy="${physics_config['wheel_iyy_factor']}" 
+                     izz="${physics_config['wheel_izz_factor']}"
+                     ixy="0" ixz="0" iyz="0"/> -->
+            <inertia ixx="${(1/12) * physics_config['wheel_mass'] * (3 * wheel_radius * wheel_radius + wheel_width * wheel_width)}" 
+                     iyy="${(1/12) * physics_config['wheel_mass'] * (3 * wheel_radius * wheel_radius + wheel_width * wheel_width)}" 
+                     izz="${(1/2) * physics_config['wheel_mass'] * wheel_radius * wheel_radius}"
+                     ixy="0" ixz="0" iyz="0"/>         
+            <!-- <inertia ixx="${physics_config['wheel_mass'] * physics_config['wheel_ixx_factor']}" 
                     iyy="${physics_config['wheel_mass'] * physics_config['wheel_iyy_factor']}" 
                     izz="${physics_config['wheel_mass'] * physics_config['wheel_izz_factor']}"
-                    ixy="0" ixz="0" iyz="0"/>
+                    ixy="0" ixz="0" iyz="0"/> -->
 
         </inertial>
     </link>
@@ -43,6 +47,8 @@
         <material>Gazebo/Black</material>
         <mu>${physics_config['drive_mu']}</mu> 
         <mu2>${physics_config['drive_mu']}</mu2> 
+        <slip1>${physics_config['drive_slip']}</slip1>
+        <slip2>${physics_config['drive_slip']}</slip2>
         <kp>${physics_config['drive_kp']}</kp> 
         <kd>${physics_config['drive_kd']}</kd> 
     </gazebo>

@@ -47,25 +47,25 @@ def generate_launch_description():
     print("GAZEBO MODELS PATH=="+str(os.environ["GAZEBO_MODEL_PATH"]))
     print("GAZEBO PLUGINS PATH=="+str(os.environ["GAZEBO_PLUGIN_PATH"]))
 
-    # generate_physics_prop_yaml = "/home/user/ros2_ws/src/barista_robot_description/scripts/generate_physics_prop_yaml.py"
+    # generate_physics_prop_py = "/home/user/ros2_ws/src/barista_robot_description/scripts/generate_physics_prop_yaml.py"
     # value_history_file = "/home/user/ros2_ws/src/barista_robot_description/config/value_history.md"
     # template_file = "/home/user/ros2_ws/src/barista_robot_description/config/template.yaml"
     # output_file = "/home/user/ros2_ws/src/barista_robot_description/config/robot_physics.yaml"
     # tabel = "0"
     # focus_column = "Try2"
 
-    # ExecuteProcess(
+    # generate_physics_property_yaml = ExecuteProcess(
     #     cmd=[
     #         "python3", 
-    #         generate_physics_prop_yaml, 
+    #         generate_physics_prop_py, 
     #         value_history_file, 
     #         tabel, 
-    #         focus_column, 
     #         template_file,
-    #         output_file
+    #         output_file,
+    #         focus_column, 
     #     ],
     #     output="screen"
-    # ),
+    # )
 
     ####### DATA INPUT END ##########
     print("Fetching XACRO ==>")
@@ -209,6 +209,7 @@ def generate_launch_description():
 
     # create and return launch description object
     return LaunchDescription([
+        # generate_physics_property_yaml,
         include_laser_arg,
         gazebo,
         rick_robot_state_publisher_node,

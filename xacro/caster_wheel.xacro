@@ -10,7 +10,7 @@
     <!-- Properties -->
     <xacro:property name="wheel_radius" value="0.0352"/>
     <xacro:property name="cylinder_length" value="0.010"/>
-    <xacro:property name="wheel_mass" value="0.02"/>
+    <!-- <xacro:property name="wheel_mass" value="0.02"/> -->
     <xacro:property name="joint_type" value="fixed"/>
     <!-- <xacro:property name="joint_type" value="continuous"/> -->
 
@@ -29,9 +29,13 @@
         </collision>
         <inertial>
             <mass value="${physics_config['caster_mass']}"/>
-            <inertia ixx="${physics_config['caster_yr_ixx']}" ixy="0" ixz="0" 
+            <!-- <inertia ixx="${physics_config['caster_yr_ixx']}" ixy="0" ixz="0" 
                      iyy="${physics_config['caster_yr_iyy']}" iyz="0"
-                     izz="${physics_config['caster_yr_izz']}"/>
+                     izz="${physics_config['caster_yr_izz']}"/> -->
+            <inertia ixx="${(1/12) * physics_config['caster_mass'] * (3 * wheel_radius * wheel_radius + cylinder_length * cylinder_length)}" 
+                     iyy="${(1/12) * physics_config['caster_mass'] * (3 * wheel_radius * wheel_radius + cylinder_length * cylinder_length)}" 
+                     izz="${(1/2) * physics_config['caster_mass'] * wheel_radius * wheel_radius}"
+                     ixy="0" ixz="0" iyz="0"/>
         </inertial>
     </link>
 
@@ -61,9 +65,13 @@
         </collision>
         <inertial>
             <mass value="${physics_config['caster_mass']}"/>
-            <inertia ixx="${physics_config['caster_yr_ixx']}" ixy="0" ixz="0" 
+            <!-- <inertia ixx="${physics_config['caster_yr_ixx']}" ixy="0" ixz="0" 
                      iyy="${physics_config['caster_yr_iyy']}" iyz="0"
-                     izz="${physics_config['caster_yr_izz']}"/>
+                     izz="${physics_config['caster_yr_izz']}"/> -->
+            <inertia ixx="${(1/12) * physics_config['caster_mass'] * (3 * wheel_radius * wheel_radius + cylinder_length * cylinder_length)}" 
+                     iyy="${(1/12) * physics_config['caster_mass'] * (3 * wheel_radius * wheel_radius + cylinder_length * cylinder_length)}" 
+                     izz="${(1/2) * physics_config['caster_mass'] * wheel_radius * wheel_radius}"
+                     ixy="0" ixz="0" iyz="0"/>
         </inertial>
     </link>
 
@@ -93,9 +101,13 @@
         </collision>
         <inertial>
             <mass value="${physics_config['caster_mass']}"/>
-            <inertia ixx="${physics_config['caster_p_ixx']}" ixy="0" ixz="0" 
+            <!-- <inertia ixx="${physics_config['caster_p_ixx']}" ixy="0" ixz="0" 
                      iyy="${physics_config['caster_p_iyy']}" iyz="0"
-                     izz="${physics_config['caster_p_izz']}"/>
+                     izz="${physics_config['caster_p_izz']}"/> -->
+            <inertia ixx="${(2/5) * physics_config['caster_mass'] * wheel_radius * wheel_radius}" 
+                     iyy="${(2/5) * physics_config['caster_mass'] * wheel_radius * wheel_radius}" 
+                     izz="${(2/5) * physics_config['caster_mass'] * wheel_radius * wheel_radius}"
+                     ixy="0" ixz="0" iyz="0"/>
         </inertial>
     </link>
 
@@ -105,7 +117,8 @@
         <child link="${prefix}_pitch_link" />
         <!-- <axis xyz="0 1 0" /> -->
         <!-- <axis xyz="0 0 1" /> -->
-        <!-- <axis xyz="1 0 0" /> -->
+        <!-- Need to test this -->
+        <!-- <axis xyz="1 0 0" />      -->
         <limit effort="1000.0" velocity="100.0" />
         <dynamics damping="${physics_config['caster_damping']}" 
                         friction="${physics_config['caster_friction']}"/>
