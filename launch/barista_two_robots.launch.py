@@ -176,8 +176,9 @@ def generate_launch_description():
     print("Fetching XACRO ==>  spawning in gazebo world DONE")
 
     # RVIZ Configuration
-    # rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'rick_and_morty.rviz')
-    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'testing.rviz')
+    rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'rick_and_morty.rviz')
+    # rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'testing.rviz')
+    # rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'wheel_testing.rviz')
 
     rviz_node = Node(
         package='rviz2',

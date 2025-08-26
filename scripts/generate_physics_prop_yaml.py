@@ -4,7 +4,7 @@ import yaml
 from collections import OrderedDict
 
 def smart_cast(value: str):
-    """Try to convert string to int or float, otherwise return as-is."""
+    """Try to convert string to int or float, otherwise return as it is."""
     value = value.strip()
     if value == "":
         return None

@@ -45,7 +45,7 @@
         <child link="${prefix}_yaw_link" />
         <!-- <axis xyz="0 1 0" /> -->
         <axis xyz="0 0 1 " />
-        <limit effort="1000.0" velocity="100.0" />
+        <!-- <limit effort="1000.0" velocity="100.0" /> -->
         <dynamics damping="${physics_config['caster_damping']}" 
                         friction="${physics_config['caster_friction']}"/>
     </joint> 
@@ -81,7 +81,7 @@
         <child link="${prefix}_roll_link" />
         <!-- <axis xyz="1 0 0" /> -->
         <axis xyz="0 1 0" />
-        <limit effort="1000.0" velocity="100.0" />
+        <!-- <limit effort="1000.0" velocity="100.0" /> -->
         <dynamics damping="${physics_config['caster_damping']}" 
                         friction="${physics_config['caster_friction']}"/>
     </joint>
@@ -119,7 +119,7 @@
         <!-- <axis xyz="0 0 1" /> -->
         <!-- Need to test this -->
         <!-- <axis xyz="1 0 0" />      -->
-        <limit effort="1000.0" velocity="100.0" />
+        <!-- <limit effort="1000.0" velocity="100.0" /> -->
         <dynamics damping="${physics_config['caster_damping']}" 
                         friction="${physics_config['caster_friction']}"/>
     </joint>

@@ -15,7 +15,7 @@ source ~/ros2_ws/install/setup.bash
 ros2 run rqt_tf_tree rqt_tf_tree
 ros2 run rqt_graph
 
-ros2 topic echo /rick/joint_states
+ros2 topic echo /rick/joint_states --once
 
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=/rick/cmd_vel
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=/morty/cmd_vel

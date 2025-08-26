@@ -93,6 +93,24 @@
         <material>${colour}</material>
     </gazebo>
 
+    <!-- FRONT indicator -->
+    <link name="front_indicator">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.10 0.01 0.01"/>
+            </geometry>
+            <material name="green_light"/>
+        </visual>
+    </link>
+
+    <joint name="joint_front_indicator" type="fixed">
+        <origin xyz="-0.09 0.0 0.05" rpy="0.0 0.0 0.0"/>
+        <parent link="cup_holder_tray"/>
+        <child link="front_indicator"/>
+    </joint>
+
+
     <!-- Drive Wheel -->
     <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
 
@@ -165,14 +183,13 @@
 
             <!-- kinematics -->
             <wheel_separation>0.28</wheel_separation>
-            <!-- <wheel_separation>0.24</wheel_separation> -->
             <wheel_diameter>0.0704</wheel_diameter>
 
             <!-- limits -->
             <max_wheel_torque>${physics_config['max_wheel_torque']}</max_wheel_torque>
-            <max_wheel_acceleration>${physics_config['max_wheel_acceleration']}</max_wheel_acceleration>
+            <!-- <max_wheel_acceleration>${physics_config['max_wheel_acceleration']}</max_wheel_acceleration> -->
             <max_linear_velocity>${physics_config['max_linear_velocity']}</max_linear_velocity>
-            <max_angular_velocity>${physics_config['max_angular_velocity']}</max_angular_velocity>
+            <!-- <max_angular_velocity>${physics_config['max_angular_velocity']}</max_angular_velocity> -->
 
             <!-- output -->
             <publish_odom>true</publish_odom>

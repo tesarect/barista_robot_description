@@ -55,7 +55,7 @@
         <gazebo reference="laser_optical_frame">
             <sensor type="ray" name="${robot_name}_laser_scanner">
                 <pose>0 0 0 0 0 0</pose>
-                <update_rate>5</update_rate>
+                <update_rate>10</update_rate>
                 <always_on>true</always_on>
                 <visualize>true</visualize>
                 <ray>

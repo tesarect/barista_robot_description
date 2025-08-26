@@ -1,26 +1,26 @@
 robot_physics:
   base_mass: null
-  chassis_mass: 0.5
-  wheel_mass: 0.15
-  caster_mass: 0.1
+  chassis_mass: 0.4
+  wheel_mass: 0.05
+  caster_mass: 0.05
   wheel_damping: 1.0
   wheel_friction: 1.0
   caster_damping: 0.0
   caster_friction: 0.1
   max_wheel_torque: 1.0
   max_wheel_acceleration: 2.5
-  max_linear_velocity: 1.0
+  max_linear_velocity: 1.9
   max_angular_velocity: 6.0
-  diff_update_rate: 60
-  jsp_update_rate: 40
-  drive_mu: 10.0
-  caster_mu: 0.1
-  drive_slip: 0.0009
-  caster_slip: 0.7
-  drive_kp: 1.0e+27
-  caster_kp: 1.0e+27
-  drive_kd: 1.0e+27
-  caster_kd: 1.0e+27
+  diff_update_rate: 20
+  jsp_update_rate: 20
+  drive_mu: 1.0
+  caster_mu: 0.01
+  drive_slip: 0.005
+  caster_slip: 0.95
+  drive_kp: 5600
+  caster_kp: 1000
+  drive_kd: 50.0
+  caster_kd: 20.0
   base_ixx_factor: null
   base_iyy_factor: null
   base_izz_factor: null
