@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /TF1/Frames1
       Splitter Ratio: 0.520588219165802
     Tree Height: 558
   - Class: rviz_common/Selection
@@ -51,7 +52,7 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
         map:
           Value: true
         morty/back_pitch_link:
@@ -66,6 +67,8 @@ Visualization Manager:
           Value: true
         morty/cup_holder_tray:
           Value: true
+        morty/front_indicator:
+          Value: false
         morty/front_pitch_link:
           Value: true
         morty/front_roll_link:
@@ -102,6 +105,8 @@ Visualization Manager:
           Value: true
         rick/cup_holder_tray:
           Value: true
+        rick/front_indicator:
+          Value: false
         rick/front_pitch_link:
           Value: true
         rick/front_roll_link:
@@ -141,7 +146,8 @@ Visualization Manager:
                     morty/back_pitch_link:
                       {}
                 morty/cup_holder_tray:
-                  {}
+                  morty/front_indicator:
+                    {}
                 morty/front_yaw_link:
                   morty/front_roll_link:
                     morty/front_pitch_link:
@@ -169,7 +175,8 @@ Visualization Manager:
                     rick/back_pitch_link:
                       {}
                 rick/cup_holder_tray:
-                  {}
+                  rick/front_indicator:
+                    {}
                 rick/front_yaw_link:
                   rick/front_roll_link:
                     rick/front_pitch_link:
@@ -257,6 +264,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
@@ -267,6 +275,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         cup_holder_tray:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_indicator:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -285,6 +298,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         laser_link:
           Alpha: 1
           Show Axes: false
@@ -398,6 +412,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
@@ -408,6 +423,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         cup_holder_tray:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_indicator:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -426,6 +446,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         laser_link:
           Alpha: 1
           Show Axes: false

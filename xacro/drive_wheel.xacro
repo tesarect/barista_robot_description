@@ -27,19 +27,10 @@
         
         <inertial>
             <mass value="${physics_config['wheel_mass']}"/>
-            <!-- <inertia ixx="${physics_config['wheel_ixx_factor']}" 
-                     iyy="${physics_config['wheel_iyy_factor']}" 
-                     izz="${physics_config['wheel_izz_factor']}"
-                     ixy="0" ixz="0" iyz="0"/> -->
             <inertia ixx="${(1/12) * physics_config['wheel_mass'] * (3 * wheel_radius * wheel_radius + wheel_width * wheel_width)}" 
                      iyy="${(1/12) * physics_config['wheel_mass'] * (3 * wheel_radius * wheel_radius + wheel_width * wheel_width)}" 
                      izz="${(1/2) * physics_config['wheel_mass'] * wheel_radius * wheel_radius}"
-                     ixy="0" ixz="0" iyz="0"/>         
-            <!-- <inertia ixx="${physics_config['wheel_mass'] * physics_config['wheel_ixx_factor']}" 
-                    iyy="${physics_config['wheel_mass'] * physics_config['wheel_iyy_factor']}" 
-                    izz="${physics_config['wheel_mass'] * physics_config['wheel_izz_factor']}"
-                    ixy="0" ixz="0" iyz="0"/> -->
-
+                     ixy="0" ixz="0" iyz="0"/>
         </inertial>
     </link>
 
@@ -58,8 +49,6 @@
         <child link="${prefix}_wheel"/>
         <parent link="chassis"/>
         <axis rpy="0 0 0" xyz="0 0 1"/>
-        <!-- this effor was the main issue. use it only for primatic and revolute joint -->
-        <!-- <limit effort="10000" velocity="1000"/> -->
         <joint_properties damping="${physics_config['wheel_damping']}" 
                         friction="${physics_config['wheel_friction']}"/>
     </joint>
