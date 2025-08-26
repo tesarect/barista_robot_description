@@ -93,7 +93,7 @@
         <material>${colour}</material>
     </gazebo>
 
-    <!-- FRONT indicator -->
+    <!-- Front direction indicator -->
     <link name="front_indicator">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -109,7 +109,6 @@
         <parent link="cup_holder_tray"/>
         <child link="front_indicator"/>
     </joint>
-
 
     <!-- Drive Wheel -->
     <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
