@@ -27,3 +27,7 @@ python3 /home/user/ros2_ws/src/barista_robot_description/scripts/generate_physic
 
 killall -9 gzserver
 killall -9 gzclient   
+
+ros2 pkg create robot_chase --build-type ament_cmake --dependencies nav_msgs tf2 tf2_ros geometry_msgs 
+
+cd ~/ros2_ws && rm -rf build/ log/ install/ && colcon build && source install/setup.bash

@@ -54,6 +54,14 @@
                 <update_rate>10</update_rate>
                 <always_on>true</always_on>
                 <visualize>true</visualize>
+
+                <xacro:if value="${robot_name == 'rick'}">
+                    <visualize_color>1 0 0 1</visualize_color> <!-- Red -->
+                </xacro:if>
+                <xacro:if value="${robot_name == 'morty'}">
+                    <visualize_color>0 0 1 1</visualize_color> <!-- Red -->
+                </xacro:if>
+
                 <ray>
                     <scan>
                         <horizontal>
