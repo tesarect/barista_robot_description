@@ -128,6 +128,31 @@ def generate_launch_description():
 
     print("Fetching XACRO ==>  gazebo empty world DONE")
 
+    # # Spawn robot in Gazebo
+    # spawn_rick = Node(
+    #     package='gazebo_ros',
+    #     executable='spawn_entity.py',
+    #     emulate_tty=True,
+    #     arguments=['-topic', '/'+rick_robot+'/robot_description',
+    #               '-entity', 'rick',
+    #               '-x', '1.5',
+    #               '-y', '-0.5', 
+    #               '-z', '0.1'],
+    #     output='screen'
+    # )
+    
+    # spawn_morty = Node(
+    #     package='gazebo_ros',
+    #     executable='spawn_entity.py',
+    #     emulate_tty=True,
+    #     arguments=['-topic', '/'+morty_robot+'/robot_description',
+    #               '-entity', 'morty',
+    #               '-x', '-0.5',
+    #               '-y', '0.0', 
+    #               '-z', '0.1'],
+    #     output='screen'
+    # )
+
     # Spawn robot in Gazebo
     spawn_rick = Node(
         package='gazebo_ros',
@@ -135,7 +160,7 @@ def generate_launch_description():
         emulate_tty=True,
         arguments=['-topic', '/'+rick_robot+'/robot_description',
                   '-entity', 'rick',
-                  '-x', '0.5',
+                  '-x', '1.0',
                   '-y', '0.0', 
                   '-z', '0.1'],
         output='screen'
