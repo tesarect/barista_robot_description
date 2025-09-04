@@ -3,7 +3,7 @@
 
     <!-- Load once, use everywhere -->
     <xacro:property name="config_file" value="$(find barista_robot_description)/config/robot_physics.yaml"/>
-    <!-- <xacro:property name="physics_config" value="${load_yaml(config_file)['robot_physics']}"/> -->
-    <xacro:property name="physics_config" value="${xacro.load_yaml(config_file)['robot_physics']}"/>
+    <xacro:property name="physics_config" value="${load_yaml(config_file)['robot_physics']}"/>
+    <!-- <xacro:property name="physics_config" value="${xacro.load_yaml(config_file)['robot_physics']}"/> -->
 
 </robot>
